@@ -1,0 +1,28 @@
+<h1>Interior Design</h1>
+<form name='form' ng-submit="addInteriorOptions()">
+    <p>Volume (cubic meters):<input type="number" ng-model="volume" required></p>
+    <p>Habitable Volume: <select ng-model="habitable">
+        <option selected disabled value="">-Pick One-</option>
+        <option value="ample">Ample Space</option>
+        <option value="suitable">Suitable Space</option>
+        <option value="minimal">Minimal Space</option>
+        <option value="small">Too Small(human can't fit)</option>
+    </select></p>
+    <p>Freedom (EVA=Extravehicular activity i.e. spacewalk): <select ng-model="freedom" required>
+        <option selected disabled value="">-Pick One-</option>
+        <option value="many">Many EVAs</option>
+        <option value="some">Some EVAs</option>
+        <option value="minimal">Minimum EVAs</option>
+        <option value="none">No Leaving Vehicle</option>
+    </select></p>
+    <p>Level of Sensory Stimulation: <select ng-model="sensory" required>
+        <option selected disabled value="">-Pick One-</option>
+        <option value="high">High</option>
+        <option value="medium">Medium</option>
+        <option value="low">Low</option>
+        <option value="none">None</option>
+    </select></p>
+    <p>Availability of Medical Care(0-5): <input type="number" name=medcare ng-model="medcare" min="0" max="5" required></p>
+    <a href="#!/habitat"><button type="button">Back</button></a>
+    <input type="submit" value="Next">
+</form>

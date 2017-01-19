@@ -1,0 +1,22 @@
+<h1>Habitat Design</h1>
+<form name="form" ng-submit="addHabitatOptions()">
+    <p>Volume (cubic meters):<input type="number" ng-model="volume" required></p>
+    <p>Layout: <select ng-model="layout" required>
+        <option selected disabled value="">-Pick One-</option>
+        <option value="1dome">1 Dome</option>
+        <option value="separate">Separate Modules</option>
+    </select></p>
+    <p>Interior Space: <select ng-model="interior" required>
+        <option selected disabled value="">-Pick One-</option>
+        <option value="spherical">Spherical</option>
+        <option value="cylindrical">Cylindrical</option>
+    </select></p>
+    <p># of Levels: <select ng-model="levels" required>
+        <option selected disabled value="">-Pick One-</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+    </select></p>
+    <a href="#!/newmission"><button type="button">Back</button></a>
+    <input type="submit" value="Next">
+</form>
