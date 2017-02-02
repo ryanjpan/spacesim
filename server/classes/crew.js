@@ -7,6 +7,6 @@ var Crew = function(){
 
 Crew.prototype.useCard = function(task) {
     this.psyhp += task.psychange;
-    this.coghp += task.cogchange;
     this.physhp += task.physchange;
+    this.coghp += task.cogchange;
 };

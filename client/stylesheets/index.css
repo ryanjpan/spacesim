@@ -1,0 +1,13 @@
+.card{
+    display: inline-block;
+    margin: 10px;
+    border: thin solid;
+    width: 200px;
+    padding-left: 10px;
+    padding-right: 10px;
+    vertical-align: top;
+}
+
+.card h4{
+    text-align: center;
+}

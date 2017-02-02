@@ -1,4 +1,4 @@
-module.exports = function(){
+function Tasks(){
     this.randCard = function(val){
         var card;
         switch(val){
@@ -149,5 +149,8 @@ module.exports = function(){
             // break;
             default: console.log("Something went wrong drawing a random card!");
         }
+        return card;
     }
 }
+
+module.exports = new Tasks();
