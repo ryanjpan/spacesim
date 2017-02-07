@@ -1,17 +1,35 @@
 {
-  "name": "Space Sim",
+  "name": "spacesim",
   "version": "1.0.0",
-  "description": "",
+  "description": "A space habitat simulation game. ",
   "main": "server.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
-    "express": "^4.13.4",
-    "body-parser": "latest",
-    "mongoose" : "latest"
-  }
+    "angular": "^1.6.1",
+    "body-parser": "^1.16.0",
+    "angular-route": "^1.6.1",
+    "express": "^4.14.0",
+    "mongoose": "^4.7.7"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "console.log('Beginning')",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ryanjpan/spacesim.git"
+  },
+  "keywords": [
+    "Game",
+    "Space",
+    "Simulator",
+    "Sim",
+    "Simulation"
+  ],
+  "author": "Christine Fanchiang, Ryan Pan, Samuel Suh",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/ryanjpan/spacesim/issues"
+  },
+  "homepage": "https://github.com/ryanjpan/spacesim#readme"
 }
