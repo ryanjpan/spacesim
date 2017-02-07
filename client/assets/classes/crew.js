@@ -1,12 +1,13 @@
-var Crew = function(){
+var Crew = function(val){
     this.name = "";
-    this.psyhp = 100;
-    this.coghp = 100;
-    this.physhp = 100;
+    this.psyhp = val;
+    this.coghp = val;
+    this.physhp = val;
 }
 
 Crew.prototype.useCard = function(task) {
     this.psyhp += task.psychange;
     this.physhp += task.physchange;
     this.coghp += task.cogchange;
+    return (this.psyhp < 0 || this.physhp < 0 || this.coghp < 0);
 };

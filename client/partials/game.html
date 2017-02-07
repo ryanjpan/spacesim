@@ -1,0 +1,43 @@
+<h1>It is {{timeOfDay}} of Day {{day}}</h1>
+<div id="cards">
+    <div class="card" ng-repeat="card in cards">
+        <h4>{{card.name}}</h4>
+        <p>{{card.desc}} </p>
+
+        <p>
+            cogchange: {{card.cogchange}} <br>
+            physchange: {{card.physchange}} <br>
+            psychange: {{card.psychange}}
+        </p>
+
+    </div>
+</div>
+<div id="crewstats">
+    <div class="crew" ng-repeat="crew in crewmembers">
+        <h4>{{crew.name}}</h4>
+        <hr>
+        <p>
+            Cognitive Health: {{crew.coghp}} <br>
+            Physical Health: {{crew.physhp}} <br>
+            Psychological Health: {{crew.psyhp}}
+        </p>
+
+    </div>
+</div>
+<div id="assignments">
+    <p>Assign a crew member for card:</p>
+    <div class="card">
+        <h4>{{cards[cardInd].name}}</h4>
+        <p>{{cards[cardInd].desc}} </p>
+
+        <p>
+            cogchange: {{cards[cardInd].cogchange}} <br>
+            physchange: {{cards[cardInd].physchange}} <br>
+            psychange: {{cards[cardInd].psychange}}
+        </p>
+    </div>
+    <select ng-model="selectedcrew" ng-options="crew.name for crew in availableCrew">
+        <option value="" disabled>--Select--</option>
+    </select>
+    <button type="button" ng-click="assign(selectedcrew)">Assign</button>
+</div>

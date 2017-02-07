@@ -1,6 +1,5 @@
 app.controller('optionsController', ['$scope', 'optionsFactory', '$location', '$route',
 function(sc, opf, loc, r) {
-    console.log('optionscontroller');
     sc.options = opf.requestOptions();
     sc.addDestination = function(dest){
         console.log('adding destination');

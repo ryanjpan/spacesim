@@ -11,3 +11,18 @@
 .card h4{
     text-align: center;
 }
+
+#crewstats{
+    vertical-align: top;
+    width: 20%;
+    display: inline-block;
+}
+
+#cards{
+    vertical-align: top;
+    display: inline-block;
+    width: 75%;
+}
+
+.crew{
+}

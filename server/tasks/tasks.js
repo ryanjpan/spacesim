@@ -92,17 +92,17 @@ function Tasks(){
                 cogchange: 1, physchange: 3, psychange: 4
             }
             break;
-            case 20: card = {
+            case 19: card = {
                 name: "SICK!", desc: "You thought that lettuce tasted a bit weird..Bacteria are the worst in space!",
                 cogchange: -1, physchange: -5, psychange: -4
             }
             break;
-            case 21: card = {
+            case 20: card = {
                 name: "Robots!", desc: "No hostile AI here! Use the robotic arm to clean the solar panels.",
                 cogchange: -2, physchange: 0, psychange: 1
             }
             break;
-            case 22: card = {
+            case 21: card = {
                 name: "Houston?", desc: "Mission control kindly informs you to hurry up, you are behind schedule on those reports…",
                 cogchange: 0, physchange: 0, psychange: -2
             }
@@ -112,32 +112,32 @@ function Tasks(){
                 cogchange: -2, physchange: -1, psychange: 0
             }
             break;
-            case 22: card = {
+            case 23: card = {
                 name: "Clean Scrubbers", desc: "The Carbon Dioxide levels are increasing. Time for a clean-out. At least you don't need duct tape!",
                 cogchange: -2, physchange: 1, psychange: 0
             }
             break;
-            case 23: card = {
+            case 24: card = {
                 name: "Video Chat", desc: "Talk to some lucky high school students!...Look I'm floating!",
                 cogchange: 0, physchange: 0, psychange: 2
             }
             break;
-            case 24: card = {
+            case 25: card = {
                 name: "Personal Call", desc: "Talk to your family for twenty minutes. Look Mom..I'm in space!",
                 cogchange: 1, physchange: 0, psychange: 2
             }
             break;
-            case 25: card = {
+            case 26: card = {
                 name: "Leisure Time", desc: "You finally finished that pesky crossword!",
                 cogchange: 2, physchange: 0, psychange: 1
             }
             break;
-            case 26: card = {
+            case 27: card = {
                 name: "Leisure Time", desc: "That was a great movie…Who would have guessed she was a robot the whole time!",
                 cogchange: 1, physchange: 0, psychange: 2
             }
             break;
-            case 27: card = {
+            case 28: card = {
                 name: "Leisure Time", desc: "What a fun space-themed board game!",
                 cogchange: 2, physchange: 1, psychange: 2
             }
@@ -147,7 +147,7 @@ function Tasks(){
             //     cogchange: -1, physchange: -3, psychange: 0
             // }
             // break;
-            default: console.log("Something went wrong drawing a random card!");
+            default: console.log(val + "Something went wrong drawing a random card!");
         }
         return card;
     }

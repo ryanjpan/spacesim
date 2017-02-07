@@ -25,6 +25,16 @@ app.config(function ($routeProvider) {
              templateUrl: 'partials/test.html',
              controller: 'gameController'
         })
+         .when('/game',{
+             templateUrl: 'partials/game.html',
+             controller: 'gameController'
+        })
+         .when('/lose',{
+             templateUrl: 'partials/lose.html',
+        })
+         .when('/win',{
+             templateUrl: 'partials/win.html',
+        })
         .otherwise({
             redirectTo: '/'
         })
