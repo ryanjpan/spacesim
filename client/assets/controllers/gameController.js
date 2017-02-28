@@ -3,7 +3,7 @@ app.controller('gameController', ['$scope', 'optionsFactory', '$location', '$rou
 function GameController(sc, opf, loc, r, http, sce) {
     //this.options = opf.requestOptions();
     this.options = {
-        crewsize: 2,
+        crewsize: 5,
         duration: 2
     }
     var self = this;
