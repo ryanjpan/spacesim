@@ -1,4 +1,9 @@
 <h1>It is {{timeOfDay}} of Day {{day}}</h1>
+<h2>Block {{timeblock}}</h2>
+<div class="">
+    <button type="button" ng-click="pause()">Pause</button>
+    <button type="button" ng-click="resume()">Resume</button>
+</div>
 <div id="cards">
     <div class="card" ng-repeat="card in cards">
         <h4>{{card.name}}</h4>
@@ -16,11 +21,17 @@
     <div class="crew" ng-repeat="crew in crewmembers">
         <h4>{{crew.name}}</h4>
         <hr>
-        <p>
-            Cognitive Health: {{crew.coghp}} <br>
-            Physical Health: {{crew.physhp}} <br>
-            Psychological Health: {{crew.psyhp}}
-        </p>
+        <div>
+            <p>Cognitive Health: {{crew.coghp}} </p>
+            <p>Physical Health: {{crew.physhp}} </p>
+            <p>Psychological Health: {{crew.psyhp}}</p>
+            <p ng-hide="crew.busy" style="color:green">Status: Free</p>
+            <p ng-show="crew.busy" style="color:red">Status: Busy</p>
+            <div ng-show="crew.busy">
+                <p>Current Task: {{crew.currentTask}}</p>
+                <p>Time blocks left: {{crew.taskTimeLeft}}</p>
+            </div>
+        </div>
 
     </div>
 </div>

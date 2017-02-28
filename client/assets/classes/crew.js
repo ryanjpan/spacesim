@@ -3,6 +3,9 @@ var Crew = function(val){
     this.psyhp = val;
     this.coghp = val;
     this.physhp = val;
+    this.busy = true;
+    this.currentTask = "";
+    this.taskTimeLeft = 0;
 }
 
 Crew.prototype.useCard = function(task) {

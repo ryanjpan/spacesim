@@ -1,11 +1,13 @@
-app.controller('gameController', ['$scope', 'optionsFactory', '$location', '$route', '$http', '$sce', GameController]);
+app.controller('gameController', ['$scope', 'optionsFactory', '$location', '$route', '$http', '$sce', '$interval', GameController]);
 
-function GameController(sc, opf, loc, r, http, sce) {
+function GameController(sc, opf, loc, r, http, sce, int) {
     //this.options = opf.requestOptions();
     this.options = {
         crewsize: 5,
         duration: 2
     }
+
+    //PRIVATE
     var self = this;
     function newPhase(){
         console.log(self.options);
@@ -34,13 +36,21 @@ function GameController(sc, opf, loc, r, http, sce) {
         sc.availableCrew = sc.crewmembers.slice(0, sc.crewmembers.length);
         sc.cardInd = 0;
     }
+
+    function tick(){
+        sc.timeblock++;
+    }
+    //END PRIVATE
+
     //INITIALIZATIONS
     sc.crewmembers = [];
     sc.cardInd = 0;
     sc.day = 0;
     sc.phase = 0;
+    sc.timeblock = 0;
     this.startGame(sc);
     newPhase();
+    var blocktimer = int(tick, 1000);
     //END INITIALIZATIONS
 
     sc.assign = function(selectedcrew){
@@ -48,7 +58,7 @@ function GameController(sc, opf, loc, r, http, sce) {
             return;
         }
         if(selectedcrew.useCard(sc.cards[sc.cardInd])){
-            loc.url('/lose')
+            loc.url('/lose');
         }
         for(var i = 0; i < sc.availableCrew.length; i++){
             if(selectedcrew == sc.availableCrew[i]){
@@ -60,6 +70,14 @@ function GameController(sc, opf, loc, r, http, sce) {
         if(sc.cardInd >= sc.crewmembers.length){
             newPhase();
         }
+    }
+
+    sc.pause = function(){
+        int.cancel(blocktimer);
+    }
+
+    sc.resume = function(){
+        blocktimer = int(tick, 1000);
     }
 
 }
