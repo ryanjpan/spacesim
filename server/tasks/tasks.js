@@ -89,8 +89,8 @@ function Tasks(){
             break;
             case 18: card = {
                 name: "Harvest Food", desc: "Your lettuce is ready! If only you could grow a burger to go with it…",
+                cogchange: 1, physchange: 3, psychange: 4, points: 1, emergency: false, fixed: false, blocks: 4
             }
-            cogchange: 1, physchange: 3, psychange: 4, points: 1, emergency: false, fixed: false, blocks: 4
             break;
             case 19: card = {
                 name: "SICK!", desc: "You thought that lettuce tasted a bit weird..Bacteria are the worst in space!",
