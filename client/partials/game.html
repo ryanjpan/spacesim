@@ -1,5 +1,6 @@
-<h1>It is {{timeOfDay}} of Day {{day}}</h1>
-<h2>Block {{timeblock}}</h2>
+<h1>It is Day {{day}}</h1>
+<h2 style="color:crimson">Block {{timeblock}}</h2>
+<h2 style="color:darkgoldenrod">Score: {{score}}</h2>
 <div class="">
     <button type="button" ng-click="pause()">Pause</button>
     <button type="button" ng-click="resume()">Resume</button>
@@ -9,13 +10,13 @@
         <h4>{{crew.name}}</h4>
         <hr>
         <div>
-            <p>Cognitive Health: {{crew.coghp}} </p>
-            <p>Physical Health: {{crew.physhp}} </p>
-            <p>Psychological Health: {{crew.psyhp}}</p>
+            <p>Cognitive Health: {{crew.coghp | number : 2}} </p>
+            <p>Physical Health: {{crew.physhp | number : 2}} </p>
+            <p>Psychological Health: {{crew.psyhp | number : 2}}</p>
             <p ng-hide="crew.busy" style="color:green">Status: Free</p>
             <p ng-show="crew.busy" style="color:red">Status: Busy</p>
             <div ng-show="crew.busy">
-                <p>Current Task: {{crew.currentTask}}</p>
+                <p>Current Task: {{crew.currentTask.name}}</p>
                 <p>Time blocks left: {{crew.taskTimeLeft}}</p>
             </div>
         </div>

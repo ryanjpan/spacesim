@@ -11,8 +11,13 @@ function GameController(sc, opf, loc, r, http, sce, int) {
 
     function tick(){
         sc.timeblock++;
+        if(sc.timeblock % 96 == 0){
+            sc.day += 1;
+        }
         for(var i=0; i < sc.crewmembers.length; i++){
-            sc.crewmembers[i].tick();
+            if(sc.crewmembers[i].tick()){
+                sc.score += sc.crewmembers[i].currentTask.points;
+            }
         }
     }
     //END PRIVATE
@@ -23,6 +28,7 @@ function GameController(sc, opf, loc, r, http, sce, int) {
     sc.cardInd = 0;
     sc.day = 0;
     sc.timeblock = 0;
+    sc.score = 0;
     this.startGame(sc, http);
     var blocktimer;
     //END INITIALIZATIONS
@@ -42,9 +48,13 @@ function GameController(sc, opf, loc, r, http, sce, int) {
 
     sc.pause = function(){
         int.cancel(blocktimer);
+        blocktimer = undefined;
     }
 
     sc.resume = function(){
+        if(blocktimer){
+            return;
+        }
         blocktimer = int(tick, 1000);
     }
 
