@@ -10,7 +10,7 @@ function GameController(sc, opf, loc, r, http, sce) {
     function newPhase(){
         console.log(self.options);
         delete sc.selectedcrew;
-        sc.cards = [];
+        sc.cards = [];      
         if(sc.phase == 2){
             sc.day++;
             if(sc.day >= self.options.duration){
@@ -33,31 +33,51 @@ function GameController(sc, opf, loc, r, http, sce) {
         }
         sc.availableCrew = sc.crewmembers.slice(0, sc.crewmembers.length);
         sc.cardInd = 0;
+
+        sc.availableCards = sc.cards.slice(0, sc.cards.length);
+
     }
     //INITIALIZATIONS
     sc.crewmembers = [];
-    sc.cardInd = 0;
+    //sc.cardInd = 0;
     sc.day = 0;
     sc.phase = 0;
     this.startGame(sc);
     newPhase();
     //END INITIALIZATIONS
 
-    sc.assign = function(selectedcrew){
+    sc.assign = function(selectedcrew, mycard){
         if(!selectedcrew){
             return;
         }
-        if(selectedcrew.useCard(sc.cards[sc.cardInd])){
+        //if(selectedcrew.useCard(sc.cards[sc.cardInd])){
+        if(selectedcrew.useCard(mycard)){
+   
             loc.url('/lose')
         }
-        for(var i = 0; i < sc.availableCrew.length; i++){
-            if(selectedcrew == sc.availableCrew[i]){
-                sc.availableCrew.splice(i, 1);
-                break;
+        for(var i = 0; i < sc.cards.length; i++){
+            if(mycard == sc.cards[i]){
+               sc.cards.splice(i, 1);
+               break;
             }
         }
+        // for(var i = 0; i < sc.availableCrew.length; i++){
+        //     if(selectedcrew == sc.availableCrew[i]){
+        //        sc.availableCrew.splice(i, 1);
+        //        break;
+        //     }
+        // }
+        // for(var i = 0; i < sc.availableCrew.length; i++){
+        //     if(selectedcrew == sc.availableCrew[i]){
+        //     //    sc.availableCrew.splice(i, 1);
+        //     //    break;
+        //     }
+        // }
         sc.cardInd++;
-        if(sc.cardInd >= sc.crewmembers.length){
+        // if(sc.cardInd >= sc.crewmembers.length){
+        //     newPhase();
+        // }
+        if(sc.cards.length<=0){
             newPhase();
         }
     }
