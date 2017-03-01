@@ -4,7 +4,7 @@ function Tasks(){
         switch(val){
             case 1: card = {
                 name: "Exercise", desc: "You get a few minutes on the treadmill! If only running was this easy at 1g!",
-                cogchange: 2, physchange: -3, psychange: 2
+                cogchange: 2, physchange: -3, psychange: 2, points: 2, emergency: false, fixed: false
             }
             break;
             case 2: card = {
