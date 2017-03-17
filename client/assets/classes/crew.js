@@ -6,6 +6,7 @@ var Crew = function(val){
     this.busy = false;
     this.currentTask = undefined;
     this.taskTimeLeft = 0;
+    this.tasksCompleted = [];
 }
 
 Crew.prototype.useCard = function(task) {
@@ -23,6 +24,7 @@ Crew.prototype.tick = function () { // returns whether now free
     this.physhp += this.currentTask.physchange / this.currentTask.blocks;
     this.coghp += this.currentTask.cogchange / this.currentTask.blocks;
     if(this.taskTimeLeft <= 0){
+        this.tasksCompleted.push(this.currentTask);
         this.busy = false;
         return true;
     }

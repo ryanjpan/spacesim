@@ -11,12 +11,18 @@ function GameController(sc, opf, loc, r, http, sce, int) {
 
     function tick(){
         sc.timeblock++;
-        if(sc.timeblock % 96 == 0){
-            sc.day += 1;
-        }
         for(var i=0; i < sc.crewmembers.length; i++){
             if(sc.crewmembers[i].tick()){
                 sc.score += sc.crewmembers[i].currentTask.points;
+                if(sc.crewmembers[i].isDead()){
+                    loc.url('/lose');
+                }
+            }
+        }
+        if(sc.timeblock % 96 == 0){
+            sc.day += 1;
+            if(sc.day >= self.options.duration){
+                loc.url('/win');
             }
         }
     }
@@ -29,12 +35,15 @@ function GameController(sc, opf, loc, r, http, sce, int) {
     sc.day = 0;
     sc.timeblock = 0;
     sc.score = 0;
+    sc.switch = 'game';
+    sc.crewStatInd = 0;
     this.startGame(sc, http);
+    var self = this;
     var blocktimer;
     //END INITIALIZATIONS
 
     sc.assign = function(selectedcrew, cardIndex){
-        console.log(cardIndex);
+
         if(!selectedcrew || selectedcrew.busy){
             return;
         }
@@ -56,6 +65,15 @@ function GameController(sc, opf, loc, r, http, sce, int) {
             return;
         }
         blocktimer = int(tick, 1000);
+    }
+
+    sc.returnToGame = function(){
+        sc.switch = 'game';
+    }
+
+    sc.toCrewStat = function(index){
+        sc.switch = 'singleCrewStat';
+        sc.crewStatInd = index;
     }
 
 }
