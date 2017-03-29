@@ -14,15 +14,16 @@
 
 #crewstats{
     vertical-align: top;
-    width: 20%;
-    display: inline-block;
+    display: block;
 }
 
 #cards{
     vertical-align: top;
     display: inline-block;
-    width: 75%;
 }
 
 .crew{
+    vertical-align: top;
+    display: inline-block;
+    margin-left: 10px;
 }

@@ -1,65 +1,80 @@
-app.controller('gameController', ['$scope', 'optionsFactory', '$location', '$route', '$http', '$sce', GameController]);
+app.controller('gameController', ['$scope', 'optionsFactory', '$location', '$route', '$http', '$sce', '$interval', GameController]);
 
-function GameController(sc, opf, loc, r, http, sce) {
+function GameController(sc, opf, loc, r, http, sce, int) {
     //this.options = opf.requestOptions();
     this.options = {
         crewsize: 5,
         duration: 2
     }
-    var self = this;
-    function newPhase(){
-        console.log(self.options);
-        delete sc.selectedcrew;
-        sc.cards = [];
-        if(sc.phase == 2){
-            sc.day++;
+
+    //PRIVATE
+
+    function tick(){
+        sc.timeblock++;
+        for(var i=0; i < sc.crewmembers.length; i++){
+            if(sc.crewmembers[i].tick()){
+                sc.score += sc.crewmembers[i].currentTask.points;
+                if(sc.crewmembers[i].isDead()){
+                    loc.url('/lose');
+                }
+            }
+        }
+        if(sc.timeblock % 96 == 0){
+            sc.day += 1;
             if(sc.day >= self.options.duration){
                 loc.url('/win');
             }
-            sc.phase = 0;
         }
-        else{
-            sc.phase++;
-        }
-        switch(sc.phase){
-            case 0: sc.timeOfDay = "Morning"; break;
-            case 1: sc.timeOfDay = "Afternoon"; break;
-            case 2: sc.timeOfDay = "Night"; break;
-        }
-        for(var i = 0; i < sc.crewmembers.length; i++){
-            http.get('/randomcard').then(function(jsonObj){
-                sc.cards.push(jsonObj.data);
-            })
-        }
-        sc.availableCrew = sc.crewmembers.slice(0, sc.crewmembers.length);
-        sc.cardInd = 0;
     }
+    //END PRIVATE
+
     //INITIALIZATIONS
     sc.crewmembers = [];
+    sc.cards = [];
     sc.cardInd = 0;
     sc.day = 0;
-    sc.phase = 0;
-    this.startGame(sc);
-    newPhase();
+    sc.timeblock = 0;
+    sc.score = 0;
+    sc.switch = 'game';
+    sc.crewStatInd = 0;
+    this.startGame(sc, http);
+    var self = this;
+    var blocktimer;
     //END INITIALIZATIONS
 
-    sc.assign = function(selectedcrew){
+    sc.assign = function(selectedcrew, cardIndex){
+
         if(!selectedcrew){
             return;
         }
-        if(selectedcrew.useCard(sc.cards[sc.cardInd])){
-            loc.url('/lose')
+
+        selectedcrew.useCard(sc.cards[cardIndex]);
+        sc.cards.splice(cardIndex, 1);
+        http.get('/randomcard').then(function(jsonObj){
+            sc.cards.push(jsonObj.data);
+        })
+        selectedcrew = "";
+    }
+
+    sc.pause = function(){
+        int.cancel(blocktimer);
+        blocktimer = undefined;
+    }
+
+    sc.resume = function(){
+        if(blocktimer){
+            return;
         }
-        for(var i = 0; i < sc.availableCrew.length; i++){
-            if(selectedcrew == sc.availableCrew[i]){
-                sc.availableCrew.splice(i, 1);
-                break;
-            }
-        }
-        sc.cardInd++;
-        if(sc.cardInd >= sc.crewmembers.length){
-            newPhase();
-        }
+        blocktimer = int(tick, 1000);
+    }
+
+    sc.returnToGame = function(){
+        sc.switch = 'game';
+    }
+
+    sc.toCrewStat = function(index){
+        sc.switch = 'singleCrewStat';
+        sc.crewStatInd = index;
     }
 
 }
