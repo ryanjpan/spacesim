@@ -1,11 +1,11 @@
 app.controller('gameController', ['$scope', 'optionsFactory', '$location', '$route', '$http', '$sce', '$interval', GameController]);
 
 function GameController(sc, opf, loc, r, http, sce, int) {
-    //this.options = opf.requestOptions();
-    this.options = {
-        crewsize: 5,
-        duration: 2
-    }
+    this.options = opf.requestOptions();
+    // this.options = {
+    //     crewsize: 5,
+    //     duration: 2
+    // }
 
     //PRIVATE
 
@@ -15,12 +15,14 @@ function GameController(sc, opf, loc, r, http, sce, int) {
             if(sc.crewmembers[i].tick()){
                 sc.score += sc.crewmembers[i].currentTask.points;
                 if(sc.crewmembers[i].isDead()){
+                    console.log(sc.crewmembers[i].name + ' died');
                     loc.url('/lose');
                 }
             }
         }
-        if(sc.timeblock % 96 == 0){
+        if(sc.timeblock % 96 == 0){ // day change
             sc.day += 1;
+            sc.timeblock = 0;
             if(sc.day >= self.options.duration){
                 loc.url('/win');
             }
@@ -70,11 +72,13 @@ function GameController(sc, opf, loc, r, http, sce, int) {
 
     sc.returnToGame = function(){
         sc.switch = 'game';
+        sc.resume();
     }
 
     sc.toCrewStat = function(index){
         sc.switch = 'singleCrewStat';
         sc.crewStatInd = index;
+        sc.pause();
     }
 
 }

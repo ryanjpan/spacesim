@@ -8,6 +8,7 @@ var Crew = function(val){
     this.taskTimeLeft = 0;
     this.tasksCompleted = [];
     this.taskQueue = [];
+    this.points = 0;
 }
 
 Crew.prototype.useCard = function(task) {
@@ -29,6 +30,7 @@ Crew.prototype.tick = function () { // returns whether now free
     this.physhp += this.currentTask.physchange / this.currentTask.blocks;
     this.coghp += this.currentTask.cogchange / this.currentTask.blocks;
     if(this.taskTimeLeft <= 0){
+        this.points += this.currentTask.points;
         this.tasksCompleted.push(this.currentTask);
         if(this.taskQueue.length > 0){
             this.currentTask = this.taskQueue[0];

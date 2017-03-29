@@ -33,7 +33,7 @@ function(sc, opf, loc, r) {
             sensory: sc.sensory,
             medcare: sc.medcare
         })
-        loc.url('/task');
+        loc.url('/game');
     }
 
 }]);
