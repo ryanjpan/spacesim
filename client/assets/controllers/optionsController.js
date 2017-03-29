@@ -12,7 +12,9 @@ function(sc, opf, loc, r) {
             duration: sc.duration,
             crewsize: sc.crewsize
         });
-        loc.url('/habitat');
+        //loc.url('/habitat');
+        loc.url('/game');
+
     }
 
     sc.addHabitatOptions = function(){
@@ -33,7 +35,17 @@ function(sc, opf, loc, r) {
             sensory: sc.sensory,
             medcare: sc.medcare
         })
-        loc.url('/task');
+        loc.url('/game');
+    }
+
+
+    sc.setDefaultOptions = function(){
+        opf.addOptions({
+            duration: 2,
+            crewsize: 5
+        });
+        //loc.url('/habitat');
+        loc.url('/game');
     }
 
 }]);

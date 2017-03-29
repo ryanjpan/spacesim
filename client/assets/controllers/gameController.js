@@ -1,11 +1,7 @@
 app.controller('gameController', ['$scope', 'optionsFactory', '$location', '$route', '$http', '$sce', '$interval', GameController]);
 
 function GameController(sc, opf, loc, r, http, sce, int) {
-    //this.options = opf.requestOptions();
-    this.options = {
-        crewsize: 5,
-        duration: 2
-    }
+    this.options = opf.requestOptions();
 
     //PRIVATE
 
