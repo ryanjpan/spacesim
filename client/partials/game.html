@@ -63,6 +63,19 @@
                 </div>
             </div>
         </div>
+        <h2>Tasks in Queue</h2>
+        <hr>
+        <div class="card" ng-repeat="card in crewmembers[crewStatInd].taskQueue">
+            <h4>{{card.name}}</h4>
+            <p>{{card.desc}} </p>
+
+            <div>
+                <p>cogchange: {{card.cogchange}} </p>
+                <p>physchange: {{card.physchange}}</p>
+                <p>psychange: {{card.psychange}}</p>
+                <p>Blocks: {{card.blocks}}</p>
+            </div>
+        </div>
         <h2>Tasks Completed</h2>
         <hr>
         <div class="card" ng-repeat="card in crewmembers[crewStatInd].tasksCompleted">

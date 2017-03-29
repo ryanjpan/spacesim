@@ -44,9 +44,10 @@ function GameController(sc, opf, loc, r, http, sce, int) {
 
     sc.assign = function(selectedcrew, cardIndex){
 
-        if(!selectedcrew || selectedcrew.busy){
+        if(!selectedcrew){
             return;
         }
+
         selectedcrew.useCard(sc.cards[cardIndex]);
         sc.cards.splice(cardIndex, 1);
         http.get('/randomcard').then(function(jsonObj){
