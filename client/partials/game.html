@@ -38,10 +38,9 @@
                     <p>psychange: {{card.psychange}}</p>
                     <p>Blocks: {{card.blocks}}</p>
                 </div>
-                <select ng-model="selectedcrew" ng-options="crew.name for crew in crewmembers">
-                    <option value="" disabled>--Select--</option>
-                </select>
-                <button type="button" ng-click="assign(selectedcrew, $index)">Assign</button>
+                <div ng-repeat="crew in crewmembers">
+                    <button type="button" ng-click="assign(crew, $index)">{{crew.name}}</button>
+                </div>
             </div>
         </div>
     </div>
