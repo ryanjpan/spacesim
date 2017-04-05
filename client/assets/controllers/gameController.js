@@ -38,6 +38,8 @@ function GameController(sc, opf, loc, r, http, sce, int) {
     this.startGame(sc, http);
     var self = this;
     var blocktimer;
+    sc.currCard = "";
+    sc.currIndex = "";
     //END INITIALIZATIONS
 
     sc.assign = function(selectedcrew, cardIndex){
@@ -46,12 +48,17 @@ function GameController(sc, opf, loc, r, http, sce, int) {
             return;
         }
 
-        selectedcrew.useCard(sc.cards[cardIndex]);
-        sc.cards.splice(cardIndex, 1);
-        http.get('/randomcard').then(function(jsonObj){
-            sc.cards.push(jsonObj.data);
-        })
-        selectedcrew = "";
+        if(sc.cardIndex > -1){
+            selectedcrew.useCard(sc.cards[cardIndex]);
+            sc.cards.splice(cardIndex, 1);
+            http.get('/randomcard').then(function(jsonObj){
+                sc.cards.push(jsonObj.data);
+            })
+            selectedcrew = "";
+        }
+
+        sc.currCard = "";
+        sc.cardIndex = -1;
     }
 
     sc.pause = function(){
@@ -75,6 +82,12 @@ function GameController(sc, opf, loc, r, http, sce, int) {
         sc.switch = 'singleCrewStat';
         sc.crewStatInd = index;
         sc.pause();
+    }
+
+    sc.setCurrAssignment = function(myCard, cardIndex){
+        console.log("hello");
+        sc.currCard = myCard;
+        sc.cardIndex = cardIndex;
     }
 
 }

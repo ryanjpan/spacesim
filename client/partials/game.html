@@ -10,6 +10,11 @@
         <div id="crewstats">
             <div class="crew" ng-repeat="crew in crewmembers track by $index" ng-click="toCrewStat($index)">
                 <h3>{{crew.name}}</h3>
+
+                <div class="pic">
+                    HI
+                </div>
+
                 <div class="stats">
                     <p>CogHealth: {{crew.coghp | number : 2}} </p>
                     <p>PhyHealth: {{crew.physhp | number : 2}} </p>
@@ -23,16 +28,15 @@
                     </div>
                 </div>
 
-                <div class="pic">
-                    HI
-                </div>
+    
 
             </div>
         </div>
         <div id="assignments">
             <p>Assign a crew member for card:</p>
-            <div class="card" ng-repeat="card in cards track by $index">
+            <div class="card" ng-repeat="card in cards track by $index" ng-click="setCurrAssignment(card, $index)">
                 <h4>{{card.name}}</h4>
+<!--
                 <p>{{card.desc}} </p>
 
                 <div>
@@ -45,8 +49,28 @@
                 <div ng-repeat="crew in crewmembers">
                     <button type="button" ng-click="assign(crew, $index)">{{crew.name}}</button>
                 </div>
+-->
             </div>
         </div>
+
+        <div id="curr_assignment">
+            <div class="card">
+                <h4>{{currCard.name}}</h4>
+                <p>{{currCard.desc}} </p>
+
+                <div>
+                    <p>cogchange: {{currCard.cogchange}} </p>
+                    <p>physchange: {{currCard.physchange}}</p>
+                    <p>psychange: {{currCard.psychange}}</p>
+                    <p>Blocks: {{currCard.blocks}}</p>
+                </div>
+                Assign to:
+                <div ng-repeat="crew in crewmembers">
+                    <button type="button" ng-click="assign(crew, $index)">{{crew.name}}</button>
+                </div>
+            </div>
+        </div>
+
     </div>
     <!-- END ng-switch game  -->
     <div ng-switch-when="singleCrewStat">

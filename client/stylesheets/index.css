@@ -1,26 +1,9 @@
-.card{
-    display: inline-block;
-    margin: 10px;
-    border: thin solid;
-    width: 200px;
-    padding-left: 10px;
-    padding-right: 10px;
-    vertical-align: top;
-}
-
-.card h4{
-    text-align: center;
-}
-
 #crewstats{
     vertical-align: top;
     display: inline-block;
 }
 
-#cards{
-    vertical-align: top;
-    display: inline-block;
-}
+
 
 .crew{
     vertical-align: top;
@@ -43,7 +26,8 @@
 
 .stats{
     display: inline-block;  
-    padding-right: 20px;
+    padding-left: 15px;
+    padding-right: 5px;
 }
 
 .pic{
@@ -56,6 +40,30 @@
 
 
 #assignments{
+    vertical-align: top;
+    display: inline-block;
+}
+
+.card{
+    display: block;
+    margin: 10px;
+    border: thin solid;
+    width: 200px;
+    padding-left: 10px;
+    padding-right: 10px;
+    vertical-align: top;
+}
+
+.card h4{
+    text-align: center;
+}
+
+#cards{
+    vertical-align: top;
+    display: inline-block;
+}
+
+#curr_assignment{
     vertical-align: top;
     display: inline-block;
 }
