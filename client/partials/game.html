@@ -9,12 +9,11 @@
         </div>
         <div id="crewstats">
             <div class="crew" ng-repeat="crew in crewmembers track by $index" ng-click="toCrewStat($index)">
-                <h4>{{crew.name}}</h4>
-                <hr>
-                <div>
-                    <p>Cognitive Health: {{crew.coghp | number : 2}} </p>
-                    <p>Physical Health: {{crew.physhp | number : 2}} </p>
-                    <p>Psychological Health: {{crew.psyhp | number : 2}}</p>
+                <h3>{{crew.name}}</h3>
+                <div class="stats">
+                    <p>CogHealth: {{crew.coghp | number : 2}} </p>
+                    <p>PhyHealth: {{crew.physhp | number : 2}} </p>
+                    <p>PsyHealth: {{crew.psyhp | number : 2}}</p>
                     <p ng-hide="crew.busy" style="color:green">Status: Free</p>
                     <p ng-show="crew.busy" style="color:red">Status: Busy</p>
                     <div ng-show="crew.busy">
@@ -22,6 +21,10 @@
                         <p>Time blocks left: {{crew.taskTimeLeft}}</p>
                         <p>Tasks in queue: {{crew.taskQueue.length}}</p>
                     </div>
+                </div>
+
+                <div class="pic">
+                    HI
                 </div>
 
             </div>
@@ -38,6 +41,7 @@
                     <p>psychange: {{card.psychange}}</p>
                     <p>Blocks: {{card.blocks}}</p>
                 </div>
+                Assign to:
                 <div ng-repeat="crew in crewmembers">
                     <button type="button" ng-click="assign(crew, $index)">{{crew.name}}</button>
                 </div>

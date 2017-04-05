@@ -14,7 +14,7 @@
 
 #crewstats{
     vertical-align: top;
-    display: block;
+    display: inline-block;
 }
 
 #cards{
@@ -24,6 +24,38 @@
 
 .crew{
     vertical-align: top;
+    display: block;
+    margin: 0px;
+    padding: 0px;
+    background-color: #3B3C3E;
+    color: #E6E6E7;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 20px;
+    border: thin solid;
+    border-color: #E6E6E7;
+}
+
+.crew h3{
+    margin: 0;
+}
+
+.stats{
+    display: inline-block;  
+    padding-right: 20px;
+}
+
+.pic{
+    background-color: #E6E6E7;
     display: inline-block;
-    margin-left: 10px;
+    padding-top: 120px;
+    padding-right: 90px;
+}
+
+
+
+#assignments{
+    vertical-align: top;
+    display: inline-block;
 }
