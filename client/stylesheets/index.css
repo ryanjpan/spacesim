@@ -2,8 +2,54 @@ div{
     margin: 0;
     padding: 0;
 }
-.card{
+#crewstats{
+    vertical-align: top;
     display: inline-block;
+}
+
+
+
+.crew{
+    vertical-align: top;
+    display: block;
+    margin: 0px;
+    padding: 0px;
+    background-color: #3B3C3E;
+    color: #E6E6E7;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 20px;
+    border: thin solid;
+    border-color: #E6E6E7;
+}
+
+.crew h3{
+    margin: 0;
+}
+
+.stats{
+    display: inline-block;  
+    padding-left: 15px;
+    padding-right: 5px;
+}
+
+.pic{
+    background-color: #E6E6E7;
+    display: inline-block;
+    padding-top: 120px;
+    padding-right: 90px;
+}
+
+
+
+#assignments{
+    vertical-align: top;
+    display: inline-block;
+}
+
+.card{
+    display: block;
     margin: 10px;
     border: thin solid;
     width: 200px;
@@ -16,18 +62,12 @@ div{
     text-align: center;
 }
 
-#crewstats{
-    vertical-align: top;
-    display: block;
-}
-
 #cards{
     vertical-align: top;
     display: inline-block;
 }
 
-.crew{
+#curr_assignment{
     vertical-align: top;
     display: inline-block;
-    margin-left: 10px;
 }

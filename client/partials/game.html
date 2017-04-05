@@ -9,12 +9,16 @@
         </div>
         <div id="crewstats">
             <div class="crew" ng-repeat="crew in crewmembers track by $index" ng-click="toCrewStat($index)">
-                <h4>{{crew.name}}</h4>
-                <hr>
-                <div>
-                    <p>Cognitive Health: {{crew.coghp | number : 2}} </p>
-                    <p>Physical Health: {{crew.physhp | number : 2}} </p>
-                    <p>Psychological Health: {{crew.psyhp | number : 2}}</p>
+                <h3>{{crew.name}}</h3>
+
+                <div class="pic">
+                    HI
+                </div>
+
+                <div class="stats">
+                    <p>CogHealth: {{crew.coghp | number : 2}} </p>
+                    <p>PhyHealth: {{crew.physhp | number : 2}} </p>
+                    <p>PsyHealth: {{crew.psyhp | number : 2}}</p>
                     <p ng-hide="crew.busy" style="color:green">Status: Free</p>
                     <p ng-show="crew.busy" style="color:red">Status: Busy</p>
                     <div ng-show="crew.busy">
@@ -24,12 +28,15 @@
                     </div>
                 </div>
 
+    
+
             </div>
         </div>
         <div id="assignments">
             <p>Assign a crew member for card:</p>
-            <div class="card" ng-repeat="card in cards track by $index">
+            <div class="card" ng-repeat="card in cards track by $index" ng-click="setCurrAssignment(card, $index)">
                 <h4>{{card.name}}</h4>
+<!--
                 <p>{{card.desc}} </p>
 
                 <div>
@@ -38,12 +45,32 @@
                     <p>psychange: {{card.psychange}}</p>
                     <p>Blocks: {{card.blocks}}</p>
                 </div>
-                <select ng-model="selectedcrew" ng-options="crew.name for crew in crewmembers">
-                    <option value="" disabled>--Select--</option>
-                </select>
-                <button type="button" ng-click="assign(selectedcrew, $index)">Assign</button>
+                Assign to:
+                <div ng-repeat="crew in crewmembers">
+                    <button type="button" ng-click="assign(crew, $index)">{{crew.name}}</button>
+                </div>
+-->
             </div>
         </div>
+
+        <div id="curr_assignment">
+            <div class="card">
+                <h4>{{currCard.name}}</h4>
+                <p>{{currCard.desc}} </p>
+
+                <div>
+                    <p>cogchange: {{currCard.cogchange}} </p>
+                    <p>physchange: {{currCard.physchange}}</p>
+                    <p>psychange: {{currCard.psychange}}</p>
+                    <p>Blocks: {{currCard.blocks}}</p>
+                </div>
+                Assign to:
+                <div ng-repeat="crew in crewmembers">
+                    <button type="button" ng-click="assign(crew, $index)">{{crew.name}}</button>
+                </div>
+            </div>
+        </div>
+
     </div>
     <!-- END ng-switch game  -->
     <div ng-switch-when="singleCrewStat">
