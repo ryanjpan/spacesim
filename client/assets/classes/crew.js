@@ -9,6 +9,7 @@ var Crew = function(val)
     this.tasksCompleted = [];
     this.taskQueue = [];
     this.points = 0;
+    this.schedule = new Schedule();
 }
 
 Crew.prototype.useCard = function(task) {

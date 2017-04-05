@@ -1,0 +1,21 @@
+table.schedule th{
+    border-bottom: solid thin;
+}
+
+#scheduleTable{
+    padding-right: 10px;
+    height: 400px;
+    overflow-y: scroll;
+}
+
+div.schedule{
+    display: inline-block;
+    width: 20%;
+    vertical-align: top;
+}
+
+.singleCrewStat{
+    display: inline-block;
+    width: 75%;
+    vertical-align: top;
+}

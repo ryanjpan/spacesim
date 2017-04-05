@@ -49,49 +49,68 @@
     <div ng-switch-when="singleCrewStat">
         <button type="button" ng-click="returnToGame()">Return</button>
         <br>
-        <div class="crew">
-            <h4>{{crewmembers[crewStatInd].name}}</h4>
+        <div class="singleCrewStat">
+            <div class="crew">
+                <h4>{{crewmembers[crewStatInd].name}}</h4>
+                <hr>
+                <div>
+                    <p>Cognitive Health: {{crewmembers[crewStatInd].coghp | number : 2}} </p>
+                    <p>Physical Health: {{crewmembers[crewStatInd].physhp | number : 2}} </p>
+                    <p>Psychological Health: {{crewmembers[crewStatInd].psyhp | number : 2}}</p>
+                    <p ng-hide="crewmembers[crewStatInd].busy" style="color:green">Status: Free</p>
+                    <p ng-show="crewmembers[crewStatInd].busy" style="color:red">Status: Busy</p>
+                    <div ng-show="crewmembers[crewStatInd].busy">
+                        <p>Current Task: {{crew.currentTask.name}}</p>
+                        <p>Time blocks left: {{crew.taskTimeLeft}}</p>
+                    </div>
+                </div>
+            </div>
+            <h2>Tasks in Queue</h2>
             <hr>
-            <div>
-                <p>Cognitive Health: {{crewmembers[crewStatInd].coghp | number : 2}} </p>
-                <p>Physical Health: {{crewmembers[crewStatInd].physhp | number : 2}} </p>
-                <p>Psychological Health: {{crewmembers[crewStatInd].psyhp | number : 2}}</p>
-                <p ng-hide="crewmembers[crewStatInd].busy" style="color:green">Status: Free</p>
-                <p ng-show="crewmembers[crewStatInd].busy" style="color:red">Status: Busy</p>
-                <div ng-show="crewmembers[crewStatInd].busy">
-                    <p>Current Task: {{crew.currentTask.name}}</p>
-                    <p>Time blocks left: {{crew.taskTimeLeft}}</p>
+            <div class="card" ng-repeat="card in crewmembers[crewStatInd].taskQueue">
+                <h4>{{card.name}}</h4>
+                <p>{{card.desc}} </p>
+
+                <div>
+                    <p>cogchange: {{card.cogchange}} </p>
+                    <p>physchange: {{card.physchange}}</p>
+                    <p>psychange: {{card.psychange}}</p>
+                    <p>Blocks: {{card.blocks}}</p>
+                </div>
+            </div>
+            <h2>Tasks Completed</h2>
+            <hr>
+            <div class="card" ng-repeat="card in crewmembers[crewStatInd].tasksCompleted">
+                <h4>{{card.name}}</h4>
+                <p>{{card.desc}} </p>
+
+                <div>
+                    <p>cogchange: {{card.cogchange}} </p>
+                    <p>physchange: {{card.physchange}}</p>
+                    <p>psychange: {{card.psychange}}</p>
+                    <p>Blocks: {{card.blocks}}</p>
                 </div>
             </div>
         </div>
-        <h2>Tasks in Queue</h2>
-        <hr>
-        <div class="card" ng-repeat="card in crewmembers[crewStatInd].taskQueue">
-            <h4>{{card.name}}</h4>
-            <p>{{card.desc}} </p>
-
-            <div>
-                <p>cogchange: {{card.cogchange}} </p>
-                <p>physchange: {{card.physchange}}</p>
-                <p>psychange: {{card.psychange}}</p>
-                <p>Blocks: {{card.blocks}}</p>
+        <div class="schedule">
+            <h2>Schedule</h2>
+            <div id="scheduleTable">
+                <table class="schedule">
+                    <thead>
+                        <tr>
+                            <th>Time Block</th>
+                            <th>Taskname</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="item in crewmembers[crewStatInd].schedule.list track by $index">
+                            <td>{{$index}}</td>
+                            <td>{{item.name}}</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
-        <h2>Tasks Completed</h2>
-        <hr>
-        <div class="card" ng-repeat="card in crewmembers[crewStatInd].tasksCompleted">
-            <h4>{{card.name}}</h4>
-            <p>{{card.desc}} </p>
-
-            <div>
-                <p>cogchange: {{card.cogchange}} </p>
-                <p>physchange: {{card.physchange}}</p>
-                <p>psychange: {{card.psychange}}</p>
-                <p>Blocks: {{card.blocks}}</p>
-            </div>
-        </div>
-
-
     </div>
     <!-- END ng-switch single crew stat  -->
 </div>
