@@ -42,15 +42,15 @@ function GameController(sc, opf, loc, r, http, sce, int) {
     sc.currIndex = "";
     //END INITIALIZATIONS
 
-    sc.assign = function(selectedcrew, cardIndex){
+    sc.assign = function(selectedcrew){
 
         if(!selectedcrew){
             return;
         }
 
         if(sc.cardIndex > -1){
-            selectedcrew.useCard(sc.cards[cardIndex]);
-            sc.cards.splice(cardIndex, 1);
+            selectedcrew.useCard(sc.cards[sc.cardIndex]);
+            sc.cards.splice(sc.cardIndex, 1);
             http.get('/randomcard').then(function(jsonObj){
                 sc.cards.push(jsonObj.data);
             })
@@ -85,7 +85,6 @@ function GameController(sc, opf, loc, r, http, sce, int) {
     }
 
     sc.setCurrAssignment = function(myCard, cardIndex){
-        console.log("hello");
         sc.currCard = myCard;
         sc.cardIndex = cardIndex;
     }

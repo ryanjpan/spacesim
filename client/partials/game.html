@@ -36,20 +36,6 @@
             <p>Assign a crew member for card:</p>
             <div class="card" ng-repeat="card in cards track by $index" ng-click="setCurrAssignment(card, $index)">
                 <h4>{{card.name}}</h4>
-<!--
-                <p>{{card.desc}} </p>
-
-                <div>
-                    <p>cogchange: {{card.cogchange}} </p>
-                    <p>physchange: {{card.physchange}}</p>
-                    <p>psychange: {{card.psychange}}</p>
-                    <p>Blocks: {{card.blocks}}</p>
-                </div>
-                Assign to:
-                <div ng-repeat="crew in crewmembers">
-                    <button type="button" ng-click="assign(crew, $index)">{{crew.name}}</button>
-                </div>
--->
             </div>
         </div>
 
@@ -66,7 +52,7 @@
                 </div>
                 Assign to:
                 <div ng-repeat="crew in crewmembers">
-                    <button type="button" ng-click="assign(crew, $index)">{{crew.name}}</button>
+                    <button type="button" ng-click="assign(crew)">{{crew.name}}</button>
                 </div>
             </div>
         </div>
