@@ -13,6 +13,9 @@ app.factory('optionsFactory', ['$http', function($http) {
             return options;
         }
 
+        this.requestOneOption = function(key){
+            return options[key];
+        }
 
     }
     return new optionsFactory();

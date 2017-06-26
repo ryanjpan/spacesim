@@ -1,6 +1,15 @@
 app.controller('optionsController', ['$scope', 'optionsFactory', '$location', '$route',
 function(sc, opf, loc, r) {
     sc.options = opf.requestOptions();
+    sc.waterSystems = [
+        'A',
+        'B'
+    ];
+    sc.oxygenSystems = [
+        'A',
+        'B'
+    ]
+
     sc.addDestination = function(dest){
         console.log('adding destination');
         opf.addOption('destination', dest);
@@ -46,6 +55,25 @@ function(sc, opf, loc, r) {
         });
         //loc.url('/habitat');
         loc.url('/game');
+    }
+
+    sc.addSystemOptions = function(){
+        console.log('adding sytem option');
+        if(!sc.waterSystem || !sc.oxygenSystem){
+            return;
+        }
+        var sysOptions = {
+            waterSystem: sc.waterSystem,
+            oxygenSystem: sc.oxygenSystem,
+        }
+        console.log(sysOptions);
+        opf.addOption('sysOptions', sysOptions);
+        loc.url('/schedule');
+    }
+
+    sc.printChoice = function(){
+        console.log(sc.waterSystem);
+        console.log(sc.oxygenSystem);
     }
 
 }]);

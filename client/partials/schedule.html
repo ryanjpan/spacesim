@@ -1,0 +1,23 @@
+<h1>you are on the schedule</h1>
+<table>
+    <thead>
+        <tr>
+            <th>Block</th>
+            <th>Time</th>
+            <th ng-repeat="day in schedule track by $index">Day {{$index}}</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="i in getNumber(96) track by $index">
+            <td>{{$index}}</td>
+            <td>{{generateTime($index)}}</td>
+            <td>{{schedule[0][$index]}}</td>
+            <td>{{schedule[1][$index]}}</td>
+            <td>{{schedule[2][$index]}}</td>
+            <td>{{schedule[3][$index]}}</td>
+            <td>{{schedule[4][$index]}}</td>
+            <td>{{schedule[5][$index]}}</td>
+            <td>{{schedule[6][$index]}}</td>
+        </tr>
+    </tbody>
+</table>

@@ -18,9 +18,15 @@ Schedule.prototype.insert = function(task, slot){
 };
 
 Schedule.prototype.init = function () {
-    var task = {name: "unassigned", blocks: 0};//empty task
+    var task = {name: "", blocks: 0};//empty task
     for(var i = 0; i < 96; i++){
         this.list.push(task);
     }
 
 };
+
+Schedule.prototype.default = function(){
+    for(var i = 0; i < 7; i++){
+        
+    }
+}

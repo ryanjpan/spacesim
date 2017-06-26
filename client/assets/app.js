@@ -35,6 +35,16 @@ app.config(function ($routeProvider) {
          .when('/win',{
              templateUrl: 'partials/win.html',
         })
+
+         .when('/components',{
+             templateUrl: 'partials/components.html',
+             controller: 'optionsController'
+        })
+         .when('/schedule',{
+             templateUrl: 'partials/schedule.html',
+             controller: 'taskController'
+        })
+
         .otherwise({
             redirectTo: '/'
         })

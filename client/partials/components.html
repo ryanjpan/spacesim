@@ -1,0 +1,9 @@
+<h1>Choose Your Components!</h1>
+
+<form id="components" ng-submit="addSystemOptions()">
+<p>Water System: <label ng-repeat="sys in waterSystems"><input ng-model="$parent.waterSystem" type="radio" name="waterSystem" ng-value="sys">{{sys}}</label></p>
+<p>Oxygen System: <label ng-repeat="sys in oxygenSystems"><input ng-model="$parent.oxygenSystem" type="radio" name="oxygenSystem" ng-value="sys">{{sys}}</label></p>
+<input type="submit" name="" value="Submit">
+</form>
+
+<button type="button" ng-click="printChoice()">Print</button>
